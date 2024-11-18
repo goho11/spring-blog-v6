@@ -16,6 +16,35 @@ public class BoardRepositoryTest { // test클래스는 test 붙이기
     @Autowired
     private BoardRepository boardRepository;
 
+    @Test
+    public void delete_test() {
+        // given
+        int id = 1;
+
+        // when
+        boardRepository.delete(id);
+
+        // eye
+        List<Board> boardList = boardRepository.findAll();
+        System.out.println("size: " + boardList.size());
+    }
+
+    @Test
+    public void save_test() {
+        // given
+        String title = "제목6";
+        String content = "내용6";
+
+        // when
+        boardRepository.save(title, content);
+
+        // eye
+        Board board = boardRepository.findById(6);
+        System.out.println(board.getId());
+        System.out.println(board.getTitle());
+        System.out.println(board.getContent());
+    } // rollback (@Transactional)
+
     @Test // 자체 스레드 생성
     public void findAll_test() {
         // given 생략가능
