@@ -18,7 +18,7 @@ public class BoardRepository {
     public void delete(int id) {
         Query q = em.createNativeQuery("delete from board_tb where id=?");
         q.setParameter(1, id);
-        q.executeUpdate(); // insert, update, delete 때 사용 함
+        q.executeUpdate(); // insert, update, delete SQL쿼리문 실행
     }
 
     // 1118 글쓰기
@@ -41,5 +41,14 @@ public class BoardRepository {
         q.setParameter(1, id); // 물음표 완성하기 (물음표 순서, 물음표에 바인딩될 변수값)
         // (Board) : 다운캐스팅. getSingleResult 타입은 object
         return (Board) q.getSingleResult(); // 통신코드. 한개만 반환
+    }
+
+    // 1119 글수정
+    public void update(int id, String title, String content) {
+        Query q = em.createNativeQuery("update board_tb set title =?, content =? where id =?");
+        q.setParameter(1, title);
+        q.setParameter(2, content);
+        q.setParameter(3, id);
+        q.executeUpdate(); // insert, update, delete SQL쿼리문 실행 -안적으면 수정 적용 안됨
     }
 }

@@ -4,6 +4,12 @@ import lombok.Data;
 
 public class BorderRequest {
 
+    @Data // 수정
+    public static class UpdateDTO {
+        private String title;
+        private String content;
+    }
+
     @Data // getter, setter, toString
     public static class SaveDTO { // static 없으면 에러
         private String title;

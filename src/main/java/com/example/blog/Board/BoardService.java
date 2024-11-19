@@ -48,4 +48,10 @@ public class BoardService {
         boardRepository.delete(id);
     } // commit or rollback 이 됨
 
+    @Transactional // commit or rollback
+    public void 게시글수정하기(int id, BorderRequest.UpdateDTO updateDTO) {
+        // 꺼내서 날리기 -왜 꺼내는지? 수정기능에만 의존되도록
+        // 서비스와 컨트롤러는 1대1 매칭 (서비스 여러개 때려도 돌아는 감)
+        boardRepository.update(id, updateDTO.getTitle(), updateDTO.getContent());
+    }
 }

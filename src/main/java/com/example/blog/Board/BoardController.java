@@ -26,7 +26,14 @@ public class BoardController {
         return "redirect:/";
     }
 
-    // 1118 글수정
+    // 1119 수정 기능
+    @PostMapping("/board/{id}/update")
+    public String update(@PathVariable("id") int id, BorderRequest.UpdateDTO updateDTO) {
+        boardService.게시글수정하기(id, updateDTO);
+        return "redirect:/board/" + id ;
+    }
+
+    // 1118 수정 화면 보기
     @GetMapping("/board/{id}/update-form")
     public String updateForm(@PathVariable("id") int id, Model model) {
         BoardResponse.UpdateFormDTO updateFormDTO = boardService.게시글수정화면보기(id);
@@ -34,12 +41,12 @@ public class BoardController {
         return "update-form";
     }
 
+    //1118 글쓰기
     @GetMapping("/board/save-form")
     public String saveForm() {
         return "save-form";
     }
 
-    //1118 글쓰기
     @PostMapping("/board/save")
     // x-www는 클래스로 받을 수 있다 -요청DTO생성
     public String save(BorderRequest.SaveDTO saveDTO, HttpServletResponse response) throws IOException {
