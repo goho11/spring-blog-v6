@@ -9,9 +9,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.sql.Timestamp;
 
 @AllArgsConstructor
-@NoArgsConstructor // DB 조회해 가져온 RS를, 디폴트 생성자 호출해 new하고 값을 채움
+@NoArgsConstructor
 @Getter
-@Table(name = "board_tb") // 테이블 이름 지정
+@Table(name = "board_tb")
 @Entity
 public class Board {
     @Id
@@ -21,4 +21,10 @@ public class Board {
     private String content;
     @CreationTimestamp
     private Timestamp createdAt;
+
+    // 업데이트 메서드
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }

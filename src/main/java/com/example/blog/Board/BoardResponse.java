@@ -5,7 +5,6 @@ import lombok.Data;
 
 public class BoardResponse {
 
-    //1118 수정
     @Data
     public static class UpdateFormDTO {
         private int id;
@@ -21,7 +20,6 @@ public class BoardResponse {
         }
     }
 
-    //1118 삭제
     @Data
     public static class DetailDTO {
         private int id;
@@ -38,7 +36,6 @@ public class BoardResponse {
         }
     }
 
-    // 1118 쓰기
     @Data
     public static class SaveDTO {
         private int id;
@@ -50,8 +47,7 @@ public class BoardResponse {
         }
     }
 
-    // board객체를 옮겨주기
-    @Data // get, set 포함
+    @Data
     public static class DTO {
         private int id;
         private String title;
