@@ -21,12 +21,9 @@ public class BoardRepository {
         q.executeUpdate(); // insert, update, delete SQL쿼리문 실행
     }
 
-    // 1118 글쓰기
-    public void save(String title, String content) {
-        Query q = em.createNativeQuery("insert into board_tb(title, content, created_at) values (?, ?, now())");
-        q.setParameter(1, title);
-        q.setParameter(2, content);
-        q.executeUpdate(); // 넣고 커밋해 -정상 return값은 1
+
+    public void save(Board board) {
+        em.persist(board);
     }
 
     // 글전체보기

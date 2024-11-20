@@ -4,26 +4,21 @@ import lombok.Data;
 
 public class BorderRequest {
 
-    @Data // 수정
+    @Data
+    public static class SaveDTO {
+        private String title;
+        private String content;
+
+        public Board toEntity() {
+            Board board = new Board(null, title, content, null);
+            return board;
+        }
+    }
+
+    @Data
     public static class UpdateDTO {
         private String title;
         private String content;
     }
 
-    @Data // getter, setter, toString
-    public static class SaveDTO { // static 없으면 에러
-        private String title;
-        private String content;
-
-        // toString 형태 -롬북 사용시 자동 출력되어 필요없다.
-        // 구조만 확인하기
-/*        @Override
-         public String toString() {
-            return "SaveDTO{" +
-                    "title='" + title + '\'' +
-                    ", content='" + content + '\'' +
-                    '}';
-        }
- */
-    }
 }
