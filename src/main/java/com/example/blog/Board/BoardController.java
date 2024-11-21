@@ -1,8 +1,10 @@
 package com.example.blog.Board;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,19 +18,19 @@ public class BoardController {
     private final BoardService boardService;
 
     @PostMapping("/board/{id}/delete")
-    public String delete(@PathVariable("id") int id) {
+    public String delete(@PathVariable("id") Integer id) {
         boardService.게시글삭제(id);
         return "redirect:/";
     }
 
     @PostMapping("/board/{id}/update")
-    public String update(@PathVariable("id") int id, BorderRequest.UpdateDTO updateDTO) {
+    public String update(@PathVariable("id") Integer id, @Valid BorderRequest.UpdateDTO updateDTO, Errors errors) {
         boardService.게시글수정하기(id, updateDTO);
         return "redirect:/board/" + id ;
     }
 
     @GetMapping("/board/{id}/update-form")
-    public String updateForm(@PathVariable("id") int id, Model model) {
+    public String updateForm(@PathVariable("id") Integer id, Model model) {
         BoardResponse.UpdateFormDTO updateFormDTO = boardService.게시글수정화면보기(id);
         model.addAttribute("model", updateFormDTO);
         return "update-form";
@@ -40,13 +42,13 @@ public class BoardController {
     }
 
     @PostMapping("/board/save")
-    public String saveV2(BorderRequest.SaveDTO saveDTO) {
+    public String save(@Valid BorderRequest.SaveDTO saveDTO, Errors errors) {
         boardService.게시글쓰기(saveDTO);
         return "redirect:/";
     }
 
     @GetMapping("/board/{id}")
-    public String detail(@PathVariable("id") int id, Model model) {
+    public String detail(@PathVariable("id") Integer id, Model model) {
         BoardResponse.DetailDTO boardDetail = boardService.게시글상세보기(id);
         model.addAttribute("model", boardDetail);
         return "detail";
