@@ -1,6 +1,6 @@
 package com.example.blog._core.util;
 
-import com.example.blog.Board.Board;
+import com.example.blog.board.Board;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

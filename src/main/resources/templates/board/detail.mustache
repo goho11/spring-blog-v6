@@ -1,7 +1,6 @@
 {{> layout/header}}
 
 <section>
-    <!-- http 1.0버전으로 만듬. 자바스크립트 없이 사용하기 위해서 -->
     <form action="/board/{{model.id}}/delete" method="post">
         <button type="submit">삭제</button>
     </form>
@@ -9,6 +8,7 @@
         <button type="submit">수정</button>
     </form>
    <div>
+       작성자 : ssar <br>
        번호 : {{model.id}} <br>
        제목 : {{model.title}} <br>
        내용 : {{model.content}} <br>

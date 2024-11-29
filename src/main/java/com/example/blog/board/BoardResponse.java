@@ -1,4 +1,4 @@
-package com.example.blog.Board;
+package com.example.blog.board;
 
 import com.example.blog._core.util.Encoding;
 import lombok.Data;

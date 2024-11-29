@@ -1,4 +1,4 @@
-package com.example.blog.Board;
+package com.example.blog.board;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -13,8 +13,10 @@ public class BorderRequest {
         private String content;
 
         public Board toEntity() {
-            Board board = new Board(null, title, content, null);
-            return board;
+            return Board.builder()
+                    .title(title)
+                    .content(content)
+                    .build();
         }
     }
 

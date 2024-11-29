@@ -1,4 +1,4 @@
-package com.example.blog.Board;
+package com.example.blog.board;
 
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;

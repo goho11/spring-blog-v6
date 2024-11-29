@@ -1,4 +1,4 @@
-package com.example.blog.Board;
+package com.example.blog.board;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -58,7 +58,7 @@ public class BoardController {
     public String list(Model model) {
         List<BoardResponse.DTO> boardList = boardService.게시글목록보기();
         model.addAttribute("models", boardList);
-        return "list";
+        return "index";
     }
 
 }
