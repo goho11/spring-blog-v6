@@ -24,9 +24,9 @@ public class BoardController {
     }
 
     @PostMapping("/board/{id}/update")
-    public String update(@PathVariable("id") Integer id, @Valid BorderRequest.UpdateDTO updateDTO, Errors errors) {
+    public String update(@PathVariable("id") int id, @Valid BoardRequest.UpdateDTO updateDTO, Errors errors) {
         boardService.게시글수정하기(id, updateDTO);
-        return "redirect:/board/" + id ;
+        return "redirect:/board/" + id;
     }
 
     @GetMapping("/board/{id}/update-form")
@@ -42,7 +42,7 @@ public class BoardController {
     }
 
     @PostMapping("/board/save")
-    public String save(@Valid BorderRequest.SaveDTO saveDTO, Errors errors) {
+    public String save(@Valid BoardRequest.SaveDTO saveDTO, Errors errors) {
         boardService.게시글쓰기(saveDTO);
         return "redirect:/";
     }

@@ -6,12 +6,13 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.sql.Timestamp;
 
 // Builder 문법:
-// 1. 풀생성자(@AllArgsConstructor)가 있어야 빌더 사용가능
-// 2. 컬렉션 빌더 불가
-// 간단하게(기존 클래스 수정)
-// 1. 생성자 만들고 2. 어노테이션 지우고, NoAr에 붙이고 3. 생성자에 Builder 붙이기
+// 1. 풀생성자(@AllArgsConstructor)있어야 사용가능
+// 2. 컬렉션은 빌더 불가능
+// 적용:
+// 1. 생성자 생성 및 Builder 붙이기
+// 2. 어노테이션 수정
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter // private이라서 값에 접근을 위해서. private - 객체지향(상태를 행위로 지향)
+@Getter // private값 접근. private - 객체지향(상태는 행위를 통해 변경)
 @Table(name = "user_tb")
 @Entity // 연속성. 엔티티매니저가 관리 가능
 public class User {

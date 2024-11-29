@@ -31,7 +31,6 @@ public class BoardResponse {
             this.id = board.getId();
             this.title = board.getTitle();
             this.content = board.getContent();
-            // Encoding클래스의 날짜변환 메서드 가져와 적용
             this.createdAt = Encoding.formatToStr(board);
         }
     }
@@ -52,7 +51,7 @@ public class BoardResponse {
         private int id;
         private String title;
 
-        public DTO(Board board) { // Board객체 통째로 받기
+        public DTO(Board board) {
             this.id = board.getId();
             this.title = board.getTitle();
         }

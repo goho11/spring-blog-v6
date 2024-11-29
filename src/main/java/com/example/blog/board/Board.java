@@ -14,14 +14,16 @@ import java.sql.Timestamp;
 @Getter
 @Table(name = "board_tb")
 @Entity
-public class Board { // n
+public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
     private String content;
 
-    @ManyToOne // 연관관계 설정 // Hibernate이 자동 테이블 생성
+    // 연관관계 설정(n:1.board가 n)
+    // LAZY: 지연로딩
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     @CreationTimestamp

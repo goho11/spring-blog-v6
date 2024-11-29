@@ -3,7 +3,7 @@ package com.example.blog.board;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
-public class BorderRequest {
+public class BoardRequest {
 
     @Data
     public static class SaveDTO {
@@ -12,7 +12,7 @@ public class BorderRequest {
         @NotBlank
         private String content;
 
-        public Board toEntity() {
+        public Board toEntity(){
             return Board.builder()
                     .title(title)
                     .content(content)
