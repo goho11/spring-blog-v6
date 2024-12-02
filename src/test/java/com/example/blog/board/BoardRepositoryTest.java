@@ -16,6 +16,13 @@ public class BoardRepositoryTest {
     private BoardRepository boardRepository;
 
     @Test
+    public void findByJoinUser() {
+        int id = 1;
+
+        boardRepository.findByIdJoinUser(id);
+    }
+
+    @Test
     public void findById_test() {
         // given
         Integer id = 1;
