@@ -16,7 +16,14 @@ public class BoardRepositoryTest {
     private BoardRepository boardRepository;
 
     @Test
-    public void findByJoinUser() {
+    public void findByIdJoinUserAndReply_test() {
+        int id = 1;
+
+        boardRepository.findByIdJoinUserAndReply(id);
+    }
+
+    @Test
+    public void findByJoinUser_test() {
         int id = 1;
 
         boardRepository.findByIdJoinUser(id);
@@ -29,12 +36,6 @@ public class BoardRepositoryTest {
 
         // when
         Optional<Board> boardOP = boardRepository.findById(id);
-        Board board = boardOP.get();
-
-        // eye
-        System.out.println("Lazy Loding 직전");
-        String username = board.getUser().getUsername();
-        System.out.println("Lazy Loding 직후");
     }
 
     @Test

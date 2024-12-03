@@ -1,8 +1,11 @@
 package com.example.blog.board;
 
 import com.example.blog._core.util.Encoding;
+import com.example.blog.reply.Reply;
 import com.example.blog.user.User;
 import lombok.Data;
+
+import java.util.List;
 
 public class BoardResponse {
 
@@ -32,6 +35,24 @@ public class BoardResponse {
         private String username;
         boolean isOwner = false;
 
+        private List<ReplyDTO> replies;
+
+        @Data
+        class ReplyDTO {
+            private int id;
+            private String comment;
+            // 댓글 작성한 유저 정보
+            private int userId;
+            private String username;
+
+            public ReplyDTO(Reply reply) {
+                this.id = reply.getId();
+                this.comment = reply.getComment();
+                this.userId = reply.getUser().getId();
+                this.username = reply.getUser().getUsername();
+            }
+        }
+
         public DetailDTO(Board board, User sessionUser) {
             this.id = board.getId();
             this.title = board.getTitle();
@@ -43,6 +64,7 @@ public class BoardResponse {
             if(sessionUser != null) {
                 this.isOwner = sessionUser.getId() == board.getUser().getId();
             }
+            this.replies = board.getReplise().stream().map(r -> new ReplyDTO(r)).toList();
         }
     }
 

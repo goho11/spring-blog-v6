@@ -1,5 +1,6 @@
 package com.example.blog.board;
 
+import com.example.blog.reply.Reply;
 import com.example.blog.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -9,6 +10,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -25,6 +28,11 @@ public class Board {
     // LAZY: 지연로딩
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
+    // 테이블 조회할 때만 영향을 준다
+    // mappedBy = "변수명" -연관관계가 있는 변수명 적는 문법
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER) // fk의 변수명이 뭐야?
+    private List<Reply> replise = new ArrayList<>();
 
     @CreationTimestamp
     private Timestamp createdAt;
